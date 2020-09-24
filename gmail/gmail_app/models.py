@@ -21,8 +21,8 @@ class Register(models.Model):
     def __str__(self):
         return str(self.user_name)
 
-class Inbox(models.Model):
-    from_email = models.EmailField(max_length=50, null=True, name="From") 
+class Compose(models.Model):
+    from_email = models.ForeignKey(Login, null=True, on_delete=models.CASCADE)
     to_email = models.EmailField(max_length=50, null=True, name="To")
     subject = models.CharField(max_length=100, null=True, blank=True, name="Subject")
     message = models.TextField(max_length=250, blank=True, null=True, name="Message")
